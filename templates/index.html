@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; }
+        .container { max-width: 400px; margin: auto; }
+        input, select { width: 100%; padding: 8px; margin: 5px 0; }
+        button { background-color: #007bff; color: white; padding: 10px; width: 100%; border: none; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Inventory Demand Prediction</h2>
+
+        <form action="/predict" method="post">
+            <label for="date">Date:</label>
+            <input type="date" name="date" value="{{ data.get('date', '') }}" required>
+
+            <label for="store">Store:</label>
+            <input type="number" name="store" value="{{ data.get('store', '') }}" required>
+
+            <label for="item">Item:</label>
+            <input type="number" name="item" value="{{ data.get('item', '') }}" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction is not none %}
+            <h3>Predicted Sales: {{ prediction }}</h3>
+        {% endif %}
+    </div>
+
+</body>
+</html>
