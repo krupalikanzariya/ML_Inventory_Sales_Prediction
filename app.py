@@ -29,7 +29,7 @@ def predict():
         return "", 204  # Handle preflight request for CORS
 
     if request.method == "GET":
-        return jsonify({"message": "Send data via POST"}), 400
+        return render_template("index.html", prediction=None, data={})  # Show form
 
     try:
         # Debugging: Print received form data

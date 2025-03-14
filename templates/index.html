@@ -10,7 +10,7 @@
     <div class="container">
         <div class="card">
             <h2>📦 Inventory Demand Prediction</h2>
-            <form action="/predict" method="post">
+            <form action="/predict" method="POST">
                 <label for="date">📅 Date:</label>
                 <input type="date" id="date" name="date" value="{{ data.date if data else '' }}" required>
             
