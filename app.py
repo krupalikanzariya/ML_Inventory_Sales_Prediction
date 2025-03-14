@@ -4,9 +4,11 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 import holidays
+from flask_cors import CORS  # Import CORS
 
 # Initialize Flask app
 app = Flask(__name__)
+CORS(app)
 
 # Load the trained model
 model = joblib.load("xgboost_model.pkl")
@@ -15,7 +17,7 @@ model = joblib.load("xgboost_model.pkl")
 def home():
     return render_template('index.html', prediction=None, data={})
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['POST', 'GET'])  
 def predict():
     if request.method == 'POST':
         # Debugging: Print received form data
